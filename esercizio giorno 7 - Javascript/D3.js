@@ -242,3 +242,8 @@ console.log(characters.length)
   Crea una funzionalità che selezioni un elemento casuale dall'array "starWarsCharacters" e ne stampi in console le proprietà in modo discorsivo (a tuo piacimento).
 */
 
+console.log(starWarsCharacters.length);
+let rand = Math.random() * 10;
+console.log(rand);
+let randFloor = Math.floor(rand);  // arrotonda un valore a un numero intero più basso
+console.log(randFloor);
