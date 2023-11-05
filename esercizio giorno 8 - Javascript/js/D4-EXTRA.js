@@ -145,25 +145,27 @@ let newNum = prompt('Inserisci un numero compreso tra 0 e 8');
 
 function loopUntil(newNum){
     let random = 0; 
+    let num1 = 0;
+    let num2 = 0;
+    let num3 = 0;
     let stop = [];
+    let array = [];
     while(true){
         random = Math.round(Math.random()*9);
         console.log(random);
-        if(random>newNum){
-                stop.push(random);
-            if(stop.length==3){
-                break;
-            }
+        array.push(random);
+        num1 = array[array.length-3];
+        num2 = array[array.length-2];
+        num3 = array[array.length-1];
+        if(num1>newNum && num2>newNum && num3>newNum){
+            stop.push(num1, num2, num3);
+            break;
         }
     }
     return stop;
 }
-if(newNum < 0 || newNum > 8){
-    console.log('Numero non valido');
-}else{
-    console.log(loopUntil(newNum));
 
-}
+console.log(loopUntil(newNum));
 
 /* EXTRA 7
 Crea una funzione chiamata "average" che riceve un array come parametro e ne ritorna la media aritmetica. La funzione salta automaticamente i valori non numerici nell'array.
