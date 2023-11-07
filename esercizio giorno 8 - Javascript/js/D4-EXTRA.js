@@ -251,3 +251,15 @@ console.log(numDays(date));
  "10","11","12"]
 */
 
+let array =[
+        [],
+        [],
+        []
+    ];
+
+function matrixGenerator(x, y){
+    for(let i = 0; i<array.length; i++){
+        console.log(array[i]);
+    }
+}
+console.log(matrixGenerator(3, 2));
