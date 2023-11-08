@@ -36,9 +36,9 @@ console.log(randomNums())
   Scrivi una funzione per ricavare solamente i valori PARI da un array composto da soli valori numerici
 */
 
-let numPari = [];
+
 function pari(array){
-    numPari = array.filter(num => num % 2 == 0)
+    let numPari = array.filter(num => num % 2 == 0)
     return numPari;
 }
 console.log(pari(array))
@@ -47,24 +47,24 @@ console.log(pari(array))
   Scrivi una funzione per sommare i numeri contenuti in un array
 */
 
-let array1 = [5, 73, 27, 9, 12, 24];
-let sum = 0;
-array1.forEach(somma);
 
-function somma(num){
-  sum += num;
+
+let array1 = [5, 73, 27, 9, 12, 24];
+function somma(array1){
+  let sum = 0;
+  array1.forEach(num => sum += num);
+  return sum
 }
-console.log(sum)
+console.log(somma(array1))
 
 /* ESERCIZIO 5 (reduce)
   Scrivi una funzione per sommare i numeri contenuti in un array
 */
 
-function somma2(){
-  let sum2 = array1.reduce((acc, num) => acc + num, 0)
-  return sum2;
+function somma2(array1){
+   return array1.reduce((somma, num) => somma + num, 0)
 }
-console.log(somma2())
+console.log(somma2(array1))
 
 
 /* ESERCIZIO 6 (map)
@@ -72,8 +72,7 @@ console.log(somma2())
 */
 
 function mapNums(n){
-  let newArray1 = array1.map(num => num + n)
-  return newArray1;
+  return array1.map(num => num + n)
 }
 //console.log(array1);
 console.log(mapNums(3));
@@ -93,8 +92,7 @@ let arrStr = [
 ]
 
 function mapStr(){
-  let newArrStr = arrStr.map(str => str.length);
-  return newArrStr
+  return arrStr.map(str => str.length);
 }
 console.log(mapStr())
 
@@ -237,15 +235,18 @@ const movies = [
   Scrivi una funzione per trovare il film più vecchio nell'array fornito.
 */
 
-let oldMovie= 2023;
-let filmPiuVecchio = null;
 
-movies.forEach((mov) => {
-  if(mov.Year<oldMovie){
-    oldMovie = mov.Year;
+const oldMovie = function(array){
+  let old = array[0];
+  movies.forEach(mov => {
+    if(mov.Year<old){
+      old = mov.Year;
+    }
   }
-});
-console.log("Il film più vecchio è dell'anno "+ oldMovie)
+  )
+  return old
+}
+console.log("Il film più vecchio è dell'anno "+ oldMovie(movies))
 
 
 /* ESERCIZIO 10
@@ -263,54 +264,46 @@ console.log(numMovies())
 */
 
 let names =[];
-movies.map(nameMovies);
-function nameMovies(mov){
-  names.push(mov.Title)
-  return names;
+
+function nameMovies(array){
+  return array.map(mov => mov.Title)
 }
-console.log(names)
+console.log(nameMovies(movies))
 
 /* ESERCIZIO 12 (filter)
   Scrivi una funzione per ottenere dall'array fornito solamente i film usciti nel millennio corrente.
 */
 
-function movies2000(){
-  let array = movies.filter(mov => mov.Year>=2000)
-  return array;
+function movies2000(array){
+  return array.filter(mov => mov.Year>=2000)
 }
-console.log(movies2000())
+console.log(movies2000(movies))
 
 /* ESERCIZIO 13 (reduce)
   Scrivi una funzione per calcolare la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array fornito.
 */
 
-function somma3(){
-  let array = [];
-  let year = [];
-  for(let i =0; i < movies.length; i++){
-    year.push(Number(movies[i].Year))
-  }
-  let somma3 = year.reduce((acc, year) => acc + year, 0)
-  return somma3;
+function somma3(array){
+  return array.reduce((acc, year) => acc + Number(year.Year), 0)
 }
-console.log(somma3())
+console.log(somma3(movies))
 
 /* ESERCIZIO 14 (find)
   Scrivi una funzione per ottenere dall'array fornito uno specifico film (la funzione riceve un imdbID come parametro).
 */
 
-function findMovie(x){
-  let movie = movies.find(mov => mov.imdbID == x)
-  return movie;
+function findMovie(array, x){
+  return array.find(mov => mov.imdbID == x)
+  
 }
-console.log(findMovie('tt0848228'));
+console.log(findMovie(movies, 'tt0848228'));
 
 /* ESERCIZIO 15 (findIndex)
   Scrivi una funzione per ottenere dall'array fornito l'indice del primo film uscito nell'anno fornito come parametro.
 */
 
-function findFirstMovie(x){
-    let movie = movies.findIndex(mov => Number(mov.Year) === x)
-    return movie
+function findFirstMovie(array, x){
+    return  array.findIndex(mov => Number(mov.Year) === x)
+    
 }
-console.log(findFirstMovie(2005));
+console.log(findFirstMovie(movies, 2005));
