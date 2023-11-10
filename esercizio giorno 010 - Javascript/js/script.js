@@ -123,10 +123,13 @@
  
        const generateTable = function () {
             let element = document.querySelector('#tableArea')
+
             let table = document.createElement('table');
             element.appendChild(table)
+
             let tr = document.createElement('tr')
             table.appendChild(tr)
+
             let th1 = document.createElement('th');
             let th2 = document.createElement('th');
             let th3 = document.createElement('th');
@@ -139,6 +142,23 @@
             tr.appendChild(th2)
             tr.appendChild(th3)
             tr.appendChild(th4)
+
+            for(let i = 0 ; i<5; i++){
+               let tr = document.createElement('tr');
+               let td1 = document.createElement('td');
+               td1.innerHTML = '<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.europosters.it%2Fstampa-su-tela-the-legend-of-zelda-breath-of-the-wild-view-v78748&psig=AOvVaw1J1jhg1bmN_eyCeaqt9n6A&ust=1699607689768000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCODSg5fKtoIDFQAAAAAdAAAAABAL" >';
+               tr.appendChild(td1)
+               let td2 = document.createElement('td');
+               td2.innerText = 'nome';
+               tr.appendChild(td2)
+               let td3 = document.createElement('td');
+               td3.innerText = '1';
+               tr.appendChild(td3)
+               let td4 = document.createElement('td');
+               td4.innerText = '2.8';
+               tr.appendChild(td4)
+               table.appendChild(tr)
+            }
 
        }
        generateTable()
@@ -172,28 +192,36 @@
      */
  
        const hideAllImages = function () {
-            let th = querySelector('')
+            let images = document.querySelectorAll('#tableArea table img')
+            images.forEach(img => img.style.display='none')
        }
- 
+       hideAllImages()
        /* EXTRA ESERCIZIO 15
        Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
      */
        
 
        const changeColorWithRandom = function () {
-            var hex = '0123456789ABC'.split('');
-            var color = '#';
-            for (i = 0; i < 6; i++) {
-                color = color + hex[Math.floor(Math.random() * 13)];
-            }
             let h2 = document.querySelector('#changeMyColor');
-            h2.style.color = color;
+            let red = Math.round(Math.random()*255)
+            let green = Math.round(Math.random()*255)
+            let blue = Math.round(Math.random()*255)
+            h2.style.color = `rgb(${red}, ${green}, ${blue},)`
        }
-
  
        /* EXTRA ESERCIZIO 16
        Crea una funzione che elimini le vocali da ogni elemento testuale della pagina (puoi aiutarti con i nuovi metodi degli array di ES6)
      */
  
-       const deleteVowels = function () {}
-     
+       const deleteVowels = function () {
+          let all = document.querySelectorAll('h1, h2, h3, li, a, p, th, td')
+          let vocali = ['a', 'e', 'i', 'o', 'u', 'y'];
+          all.forEach(node => {
+               let txt = [...node.innerText].filter(char => {
+                    char = char.toLowerCase();
+                    return char !== 'a'  && char !== 'e'  && char !== 'i'  && char !== 'o'  && char !== 'u'  && char !== 'y';
+               }).join('');
+               console.log(txt)
+          })
+       }
+       deleteVowels()
