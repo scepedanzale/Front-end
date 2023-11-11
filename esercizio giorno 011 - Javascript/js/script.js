@@ -31,11 +31,9 @@ let newTask = function(e) {
             }    
         })
         inputSpace.value='';
-        
         e.preventDefault()
     }
 }
 
 let addButton = document.querySelector('#newTask form button');
 addButton.addEventListener('click', newTask)
-
