@@ -6,6 +6,7 @@ html{
     height: 100%;
     width: 100%;
     display: inline-block;
+    text-align: center;
 }
 h1{
     color: white;
@@ -16,6 +17,7 @@ h1{
     margin: 1em;
     display: inline-block;
     text-align: center;
+    width: 45em;
 }
 #tabellone div{
     background-color: rgb(101, 123, 99);
@@ -85,6 +87,7 @@ h1{
 #tabUser{
     text-align: center;
     height: 100%;
+    display: inline;
 }
 #tabUser table{
     border: 1px solid black;

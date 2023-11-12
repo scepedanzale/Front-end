@@ -13,10 +13,10 @@ function creaTabellone(){
         let num = document.createElement('div')
         num.innerText = i;
         tabellone.appendChild(num)
-    }
-    
+    }    
 }
 
+// Estrazione numero casuale
 function estrazioneNumero(){
     btn.innerText = 'estrai';
     tabellone.appendChild(btn)
@@ -38,8 +38,7 @@ function estrazioneNumero(){
                     }
                 })
                 break;
-            }
-            
+            }   
         }
     })
 }
@@ -48,7 +47,7 @@ function estrazioneNumero(){
 function input(){
     let form = document.createElement('form')
     let label = document.createElement('p')
-    label.innerText = 'Scegli con quante cartelle giocare'
+    label.innerText = 'Con quante cartelle vuoi giocare? Scegli un numero da 1 a 6'
 
     // creazione campo input
     let input = document.createElement('input')
@@ -71,6 +70,7 @@ function input(){
         }else if(qty<1 || qty>6){
             alert('scegli un numero di cartelle tra 1 e 6')
         }else{
+            // Creazione tabelle
             for(let i = 1; i<=qty; i++){
                 arrayCart = [];
                 let table = document.createElement('table');
@@ -85,12 +85,13 @@ function input(){
                             tr.appendChild(td);
                             table.appendChild(tr);
                             tabArea.appendChild(table);  
-                             
                         }
                     }
                 }
             }
-            back()            
+            back()       
+            creaTabellone()
+            estrazioneNumero()    
             btn.parentNode.remove()
         }
         e.preventDefault()
@@ -101,16 +102,16 @@ function input(){
     form.appendChild(btn);
 }
 
+// bottone per tornare indietro
 function back(){
     let footer = document.querySelector('footer')
     let btn = document.createElement('button')
     btn.innerText = 'Torna indietro';
     footer.appendChild(btn)
     btn.addEventListener('click', ()=>{
-        window.history.back()
+        location.reload()
     })
 }
 
 input()
-creaTabellone()
-estrazioneNumero()
+
