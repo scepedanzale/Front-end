@@ -18,9 +18,6 @@ hr {
 
 /* HEADER */
 header {
-  position: sticky;
-  top: 15px;
-  z-index: 5;
   background: rgb(0, 160, 198);
   background: linear-gradient(180deg, rgba(0, 160, 198, 1) 0%, rgba(3, 109, 134, 1) 68%);
   text-align: center;
@@ -100,31 +97,6 @@ main {
   }
 }
 
-/* #underline{
-  display: block;
-  opacity: 70%;
-  position: relative;
-  bottom: 38px;
-  z-index: 1;
-} */
-
-/*
-  Un "absolute" dentro ad un "relative", si riferisce al contenitore.
-  Un "absolute", dentro uno "static" si riferisce al browser
-*/
-h1 span{
-  position: relative;
-
-}
-h1 img{
-  width: 100%;
-  position: absolute;
-  right: 0;
-  top: 80%;
-  z-index: -1;
-  opacity: 70%;
-}
-
 section {
   background-color: #e3e3e3;
   padding: 1.5em 1em;
@@ -133,18 +105,13 @@ section {
 }
 
 section h2 {
-  color: #1c1b1b;
-  background-color: #a3a3a3;
   text-align: center;
-  text-transform: uppercase;
-  font-size: 2em;
+  color: #333;
+  font-size: 1.4rem;
+  margin-bottom: 1.7rem;
   font-weight: bold;
-  
+  background-color: #a3a3a3;
   padding: 0px 1em;
-  width: fit-content;
-  position: relative;
-  bottom: 40px;
-  box-shadow: 1px 1px 5px black;
 }
 
 /* ELEMENTI NEL MAIN - ARTICLE */
@@ -155,8 +122,6 @@ h1 {
   font-weight: bold;
   letter-spacing: -0.03em;
   margin-bottom: 0.7em;
-  position: relative;
-  z-index: 2;
 }
 
 p,
@@ -348,18 +313,6 @@ aside div {
   padding: 1em;
 }
 
-
-aside div{
-  position: relative;
-}
-.fa-tag{
-  position: absolute;
-  right: 2%;
-  top: 10%;
-  font-size: 4rem;
-  opacity: 15%;
-}
-
 @media screen and (min-width: 1200px) {
   aside div {
     display: inline-block;
@@ -431,52 +384,5 @@ footer a {
   .social,
   .toTop {
     display: none;
-  }
-}
-
-
-.icons{
-  display: block;
-  float: right;
-  font-size: 1.8em;
-  position: absolute;
-  right: -30px;
-  /* left: 85%; */
-}
-.icons .far{
-  display: block;
-  background-color: rgba(255, 255, 255, 0.589);
-  padding: 0.5em;
-  border: 2px solid white;
-  border-radius: 15%;
-  margin: 0.5em;
-  
-}
-.fa-plus-square{
-  color: rgb(54, 68, 112);
-}
-.fa-calendar-alt{
-  color: rgb(54, 68, 112);
-}
-.fa-caret-square-up{
-  color: rgb(200, 85, 85);
-} 
-.icons a{
-  text-decoration: none;
-}
-
-
-@media screen and (max-width: 767px){
-  
-}
-@media screen and (min-width: 768px) and (max-width: 1199px){
-  #toTop{
-    bottom: 16px;
-  }
-}
-@media screen and (min-width: 1200px){
-  article p+img{
-    background-color: green;
-    float: left;
   }
 }
