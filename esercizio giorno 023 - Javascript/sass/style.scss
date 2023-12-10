@@ -23,17 +23,15 @@ nav h1{
         transform: rotate(-15deg);
     }
 }
-nav h1:hover{
-
-}
 nav .dropdown{
     border: 1px solid black;
     border-radius: 0.3em;
     padding: 0.5em;
+    &:hover{
+        background-color: rgb(202, 150, 18);
+    }
 }
-nav .dropdown:hover{
-    background-color: rgb(202, 150, 18);
-}
+
 nav ul {
     background-color: rgb(0, 0, 0);
     color: white;
@@ -41,11 +39,12 @@ nav ul {
 nav ul li{
     font-size: 0.8em;
     margin: 0.8em 0.2em;
+    &:hover{
+        background-color: rgb(233, 183, 56);
+        cursor: pointer;
+    }
 }
-nav ul li:hover{
-    background-color: rgb(233, 183, 56);
-    cursor: pointer;
-}
+
 
 
 // cards
@@ -57,4 +56,14 @@ nav ul li:hover{
     transform: scale3d(1.2, 1.2, 1.2);
     box-shadow: 3px 3px 0.8em rgba(0, 0, 0, 0.392), 
                 -3px -3px 0.8em rgba(0, 0, 0, 0.392);
+}
+
+nav ul li button{
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border: none;
+    border-radius: 2em;
+    &:hover{
+        background-color: rgb(139, 10, 10);
+    }
 }

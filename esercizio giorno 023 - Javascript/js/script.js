@@ -32,7 +32,6 @@ function createCard(obj){
                             <p class="card-text">${obj[i].price}</p>
                             <button type="button" class="btn btn-danger">Scarta</button>
                             <button type="button" class="btn btn-warning">Aggiungi al carrello</button>
-                            
                         </div>
                     </div>
                 </div> `
@@ -48,13 +47,37 @@ function createCard(obj){
                 let btnAdd = document.querySelectorAll('.btn-warning');
                 btnAdd[i].addEventListener('click', (b) => {
                     let ul = document.querySelector('nav ul');
-                    let li = document.createElement('li');
-                    li.className.add= "py-3";
-                    let libro = obj[i].title
-                    li.innerHTML = libro;
-                    ul.appendChild(li);
-                    carrello.push(libro)
-                    console.log(carrello)
+                    let libro = obj[i].title;   // titolo libro
+                    
+                    if(!carrello.includes(libro)){  // se il carrello non contiene il libro: aggiungilo
+                        carrello.push(libro)
+                        let li = document.createElement('li');
+                        li.className.add= "py-3";
+                        li.innerHTML = libro;
+
+                        let btn = document.createElement('button'); // bottone per eliminare dal carrello
+                        btn.innerText = 'elimina'
+                        btn.addEventListener('click', ()=>{
+                            btn.parentElement.style.display = 'none';  
+                            for(let i = 0; i<carrello.length; i++){  
+                                if(carrello[i] === libro){
+                                    carrello.splice(i, 1);
+                                    localStorage.setItem('carrello', carrello)
+                                }
+                            }
+                            console.log(carrello)
+                        })
+
+                        li.appendChild(btn)
+                        ul.appendChild(li);
+                        console.log(carrello)
+
+                        
+                        localStorage.setItem('carrello', carrello) 
+                    }
                 })
     }
 }
+
+
+        
