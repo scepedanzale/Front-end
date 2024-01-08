@@ -91,7 +91,45 @@
             </table>
           </div>
           <div id="modale">
-            
+            <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Modifica prodotto</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          <form>
+                              <div class="input-group mb-3">
+                                  <span class="input-group-text" id="basic-addon1">Nome prodotto</span>
+                                  <input type="text" id="nome" class="form-control" minlength="2" value="${element.name}" autofocus>
+                              </div>
+                              <div class="input-group mb-3">
+                                  <span class="input-group-text" id="basic-addon1">Descrizione</span>
+                                  <textarea id="description" class="form-control" minlength="10">${element.description}</textarea>
+                              </div>
+                              <div class="input-group mb-3">
+                                  <span class="input-group-text" id="basic-addon1">Brand</span>
+                                  <input id="brand" type="text" class="form-control" minlength="2" value="${element.brand}">
+                              </div>
+                              <div class="input-group mb-3">
+                                  <span class="input-group-text" id="basic-addon1">Image</span>
+                                  <input id="img" type="text" class="form-control" value="${element.imageUrl}">
+                              </div>
+                              <div class="input-group mb-3">
+                                  <span class="input-group-text" id="basic-addon1">Prezzo</span>
+                                  <input id="price" type="number" class="form-control" value="${element.price}">
+                              </div>
+                          </form>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" id="save" class="btn btn-primary" data-save="modal">Save changes</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          </div>
           </div>
          
         </div>
