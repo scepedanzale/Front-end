@@ -1,8 +1,20 @@
-import { createStore } from "redux";
-import mainReducer from "../reducers";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import {thunk} from 'redux-thunk'
+import jobs from "../reducers/jobs";
+import favourites from "../reducers/favourites";
 
-const initialState = {
-    favourites : []
+const state = {
+    favourites: [],
+    jobs: {
+        results: [],
+        loading: false,
+        errMsg: false
+    }
 }
 
-export const store = createStore(mainReducer, initialState)
+const bigReducer = combineReducers({
+    favourites: favourites,
+    jobs: jobs
+})
+
+export const store = createStore(bigReducer, state, applyMiddleware(thunk))

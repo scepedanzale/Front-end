@@ -1,34 +1,28 @@
 import { useState } from "react";
-import { Container, Row, Col, Form, ListGroup } from "react-bootstrap";
+import { Container, Row, Col, Form, ListGroup, Spinner, Alert } from "react-bootstrap";
 
 import Job from "./Job";
+import { useDispatch, useSelector } from "react-redux";
+import { getJobs } from "../actions";
 
 const MainSearch = () => {
+
   const [query, setQuery] = useState("");
-  const [jobs, setJobs] = useState([]);
 
-  const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
+  const jobs = useSelector(state => state.jobs.results)
+  const loading = useSelector(state => state.jobs.loading)
+  const errMsg = useSelector(state => state.jobs.errMsg)
 
+  const dispatch= useDispatch()
+ 
   const handleChange = e => {
     setQuery(e.target.value);
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
-
-    try {
-      const response = await fetch(baseEndpoint + query + "&limit=20");
-      if (response.ok) {
-        const { data } = await response.json();
-        setJobs(data);
-        console.log(data)
-      } else {
-        alert("Error fetching results");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    dispatch(getJobs(query))
+  }
 
   return (
     <Container>
@@ -39,13 +33,24 @@ const MainSearch = () => {
         <Col xs={10} className="mx-auto">
           <Form onSubmit={handleSubmit}>
             <Form.Control type="search" value={query} onChange={handleChange} placeholder="type and press Enter" />
+            {/* <Button type="button" onClick={handleSubmit}>cerca</Button> */}
           </Form>
         </Col>
         <Col xs={12} className="mx-auto my-5 bg-body-tertiary">
+          {loading && 
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          }
+          {errMsg && 
+            <Alert variant={'danger'}>
+              Errore nel caricamento dati...
+          </Alert>
+          }
           <ListGroup>
-            {jobs.map(jobData => (
+            {jobs && jobs.map(jobData => (
               <Job key={jobData._id} data={jobData} />
-            ))}
+            ))} 
           </ListGroup>
         </Col>
       </Row>
